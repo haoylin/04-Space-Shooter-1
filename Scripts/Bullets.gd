@@ -8,6 +8,7 @@ func _ready():
 
 func fire(b):
 	if ready:
+		print("firing")
 		add_child(b)
 		ready = false
 		$Timer.start()

@@ -34,3 +34,7 @@ func _physics_process(delta):
 func _integrate_forces(state):
 	#state.set_linear_velocity(velocity)
 	pass
+
+
+func _on_Timer_timeout():
+	pass # Replace with function body.

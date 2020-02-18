@@ -3,8 +3,8 @@ extends KinematicBody2D
 export var health = 100
 export var score = 0
 export var margin = 5
-export var y_range = 300
-export var acceleration = 0.1
+export var y_range = 150
+export var acceleration = 0.09
 
 var velocity = Vector2(0,0)
 
@@ -34,19 +34,20 @@ func die():
 	get_tree().change_scene("res://Scenes/GameOver.tscn")
 
 func _physics_process(delta):
-	if Input.is_action_pressed("Fire"):
+	if Input.is_action_pressed("fire"):
 		var b = Bullet_R.instance()
 		b.position = position
-		b.position.y -= 25
+		b.position.y -= -233
+		b.position.x -= -267
 		get_node("/root/Game/Bullets").fire(b)
 
-	if Input.is_action_pressed("Left"):
+	if Input.is_action_pressed("left"):
 		velocity.x -= acceleration
-	if Input.is_action_pressed("Right"):
+	if Input.is_action_pressed("right"):
 		velocity.x += acceleration
-	if Input.is_action_pressed("Up"):
+	if Input.is_action_pressed("up"):
 		velocity.y -= acceleration
-	if Input.is_action_pressed("Down"):
+	if Input.is_action_pressed("down"):
 		velocity.y += acceleration
 
 	if position.x < margin:
@@ -55,9 +56,9 @@ func _physics_process(delta):
 	if position.x > VP.x - margin:
 		velocity.x = 0
 		position.x = VP.x - margin
-	if position.y < VP.y - y_range:
+	if position.y < margin:
 		velocity.y = 0
-		position.y = VP.y - y_range
+		position.y = margin
 	if position.y > VP.y - margin:
 		velocity.y = 0
 		position.y = VP.y - margin

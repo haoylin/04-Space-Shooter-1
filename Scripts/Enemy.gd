@@ -42,5 +42,5 @@ func _on_Timer_timeout():
 		var b = EnemyBullet.instance()
 		b.position = position
 		b.position.y += 25
-		get_node("/root/Game/Enemy Bullets").add_child(b)
+		get_node("/root/Game/EnemyBullets").add_child(b)
 		
